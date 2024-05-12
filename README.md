@@ -3,3 +3,5 @@ to run the test->
 1: Run the attached testNG.xml file from testRunner folder
 or
 2: Execute mvn clean install 
+
+Execution Report can be found at -> target/JPMC_APIExecutionReport.html
