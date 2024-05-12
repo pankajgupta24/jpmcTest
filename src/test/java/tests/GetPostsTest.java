@@ -4,6 +4,9 @@ import base.BaseTest;
 
 import com.qa.jp.client.RestClient;
 import com.qa.jp.constants.APIHttpStatus;
+import io.restassured.path.json.JsonPath;
+import io.restassured.path.json.mapper.factory.JsonbObjectMapperFactory;
+import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -48,11 +51,16 @@ public class GetPostsTest extends BaseTest {
         queryParams.put("id", "1");
 
 
-        restClient.get(POST_ENDPOINT, queryParams, null, false, true)
+      restClient.get(POST_ENDPOINT, queryParams, null, false, true)
                 .then().log().all()
                 .assertThat().statusCode(APIHttpStatus.OK_200.getCode())
-                .assertThat()
-                .body("$..id",equalTo("1"));
+               .assertThat()
+              .body("findAll{it.id='1'}.id[0]",equalTo("1"));
+
+
+
+
+
     }
 
 

@@ -51,7 +51,7 @@ public class GetUsersTest extends BaseTest {
                 .then().log().all()
                 .assertThat().statusCode(APIHttpStatus.OK_200.getCode())
                 .assertThat()
-                .body("$..id",equalTo("1"));
+                .body("findAll{it.id='1'}.id[0]",equalTo("1"));
     }
 
 
